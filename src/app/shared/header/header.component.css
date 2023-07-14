@@ -1,0 +1,42 @@
+.navbar .navbar-brand .logo {
+  height: 100px;
+}
+.navbar .navbar-nav {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background: #401f20;
+  justify-content: space-around;
+  @media (max-width: 767px) {
+    height: inherit;
+  }
+}
+.navbar .navbar-nav .nav-item a {
+  color: #fff;
+}
+@media (max-width: 767px) {
+  .navbar {
+    background: #401f20;
+  }
+  .navbar .navbar-brand {
+    padding: 0.5rem 0 !important;
+  }
+  .navbar .navbar-brand .logo {
+    height: 50px;
+  }
+  .navbar .navbar-toggler {
+    border: none;
+    height: 66px;
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+  }
+  .navbar .navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .navbar .navbar-toggler span {
+    filter: brightness(0) invert(1);
+  }
+}

@@ -1,0 +1,141 @@
+<div class="container">
+  <div class="col-md-7 m-auto">
+    <div class="text-white text-center" [ngSwitch]="stepIndex">
+      <ng-container *ngSwitchCase="1">
+        <div (click)="stepForward()">
+          <button class="btn btn-primary btn-lg rounded-0 p-3 px-4">
+            Log in with Discord
+          </button>
+          <p class="h3 fw-light my-4">
+            Find the Perfect Diablo 4 Group <br />
+            for your activity
+          </p>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <p class="h3 fw-light my-4">
+          What character are you playing currently?
+        </p>
+        <div class="d-flex flex-wrap justify-content-between">
+          <div
+            class="character-listing"
+            *ngFor="let item of playingCharacterList"
+          >
+            <div class="character-img">
+              <img
+                src="{{ item.img }}"
+                alt=""
+                (click)="stepForward(); characterImg($event)"
+              />
+            </div>
+            <p class="small">{{ item.text }}</p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="3">
+        <p class="h3 fw-light my-4">What level is your character?</p>
+        <input
+          class="character-range-input"
+          type="number"
+          (blur)="stepForward()"
+          min="0"
+          max="100"
+        />
+      </ng-container>
+      <ng-container *ngSwitchCase="4">
+        <p class="h3 fw-light my-4">What build are you playing?</p>
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="character-listing" *ngFor="let item of playingBuild">
+            <div class="character-img">
+              <img src="{{ item.img }}" alt="" (click)="stepForward(); buildImg($event)" />
+            </div>
+            <p class="small">{{ item.text }}</p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="5">
+        <div (click)="stepForward()">
+          <p class="h3 fw-light my-4">All Set! Let's choose an activity..</p>
+          <div class="d-flex flex-wrap justify-content-center">
+            <div class="character-listing" *ngFor="let item of playingActivity">
+              <div class="character-img">
+                <img
+                  src="{{ item.img }}"
+                  alt=""
+                  (click)="stepForward(); activityImg($event)"
+                />
+              </div>
+              <p class="small">{{ item.text }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="6">
+        <div class="selected-activty">
+          <div class="selected-activty-img">
+            <img src="{{ this.activityImgURL }}" alt="" />
+          </div>
+          <div class="activtiy-ranges align-items-center d-flex flex-column">
+            <button
+              (click)="stepForward()"
+              *ngFor="let item of activityRanges"
+              [disabled]="item.disabled ? true : false"
+            >
+              {{ item.range }}
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="7">
+        <p class="h3 fw-light my-5 loading">Finding groups</p>
+        <div class="group">
+          <div class="group-item current">
+            <div class="group-main mb-5">
+              <div class="group-main-img">
+                <img src="{{ this.characterImgURL }}" alt="" />
+              </div>
+              <p class="small">You</p>
+            </div>
+            <div class="group-thumb-img">
+              <img src="{{ this.buildImgURL }}" alt="" />
+            </div>
+          </div>
+          <div class="group-item">
+            <div class="group-main mb-5">
+              <div class="group-main-img">
+                <img alt="" />
+              </div>
+              <p class="small">Other Name</p>
+            </div>
+            <div class="group-thumb-img">
+              <img alt="" />
+            </div>
+          </div>
+          <div class="group-item">
+            <div class="group-main mb-5">
+              <div class="group-main-img">
+                <img alt="" />
+              </div>
+              <p class="small">Other Name</p>
+            </div>
+            <div class="group-thumb-img">
+              <img alt="" />
+            </div>
+          </div>
+          <div class="group-item">
+            <div class="group-main mb-5">
+              <div class="group-main-img">
+                <img alt="" />
+              </div>
+              <p class="small">Other Name</p>
+            </div>
+            <div class="group-thumb-img">
+              <img alt="" />
+            </div>
+          </div>
+        </div>
+        <p class="h3 fw-light my-5">Add each another</p>
+      </ng-container>
+    </div>
+  </div>
+</div>
